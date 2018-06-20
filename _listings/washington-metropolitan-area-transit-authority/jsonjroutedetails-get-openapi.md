@@ -1,0 +1,245 @@
+---
+swagger: "2.0"
+x-collection-name: Washington Metropolitan Area Transit Authority
+x-complete: 0
+info:
+  title: WMATA Bus Route and Stop Methods JSON - Path Details
+  description: "Description\r\n\r\nFor a given date, returns the set of ordered latitude/longitude
+    points along\r\na route variant along with the list of stops served.\r\n\r\nResponse
+    Elements\r\n\r\n\r\n\r\n\r\nElement\r\n\r\nDescription\r\n\r\n\r\n\r\n\r\n\r\nDirection0/Direction1\r\n\r\n\r\nStructures
+    describing path/stop\r\ninformation.\r\n\r\nMost routes will return content in
+    both Direction0 and\r\nDirection1 elements, though a few will return NULL for
+    Direction0 or for Direction1.\r\n\r\n0 or 1 are binary properties. There is no
+    specific mapping to\r\ndirection, but a different value for the same route signifies\r\nthat
+    the route is in an opposite direction.\r\n\r\n\r\n\r\n\r\nName\r\n\r\nDescriptive
+    name for the route.\r\n\r\n\r\n\r\nRouteID\r\n\r\nBus route variant (e.g.: 10A,
+    10Av1, etc.).\r\n\r\n\r\n\r\n\r\n\r\nDirection0/Direction1\r\nElements\r\n\r\n\r\n\r\n\r\n\r\nDirectionNum\r\n\r\nDeprecated.
+    Use the\r\nDirectionText element to denote the general direction of the route\r\nvariant.\r\n\r\n\r\n\r\nDirectionText\r\n\r\nGeneral
+    direction of the route variant (NORTH, SOUTH, EAST,\r\nWEST, LOOP, etc.).\r\n\r\n\r\n\r\nShape\r\n\r\n\r\nArray
+    containing shape point information (ShapePoint).\r\n\r\n\r\n\r\n\r\nStops\r\n\r\n\r\nArray
+    containing stop information (Stop).\r\n\r\n\r\n\r\n\r\nTripHeadsign\r\n\r\nDescriptive
+    text of where the bus is headed. This is similar,\r\nbut not necessarily identical,
+    to what is displayed on the\r\nbus.\r\n\r\n\r\n\r\n\r\n\r\nShapePoint\r\nElements\r\n\r\n\r\n\r\n\r\n\r\nLat\r\n\r\nLatitude.\r\n\r\n\r\n\r\nLon\r\n\r\nLongitude.\r\n\r\n\r\n\r\nSeqNum\r\n\r\nOrder
+    of the point in the sequence of ShapePoints.\r\n\r\n\r\n\r\n\r\n\r\nStop Elements\r\n\r\n\r\n\r\n\r\n\r\nLat\r\n\r\nLatitude.\r\n\r\n\r\n\r\nLon\r\n\r\nLongitude.\r\n\r\n\r\n\r\nName\r\n\r\nStop
+    name. May be slightly different from what is spoken or\r\ndisplayed in the bus.\r\n\r\n\r\n\r\nRoutes\r\n\r\nString
+    array of route variants which provide service at this\r\nstop. Note that these
+    are not date-specific; any route variant\r\nwhich stops at this stop on any day
+    will be listed.\r\n\r\n\r\n\r\nStopID\r\n\r\n7-digit regional ID which can be
+    used in various bus-related\r\nmethods. If unavailable, the StopID will be 0 or
+    NULL."
+  version: 1.0.0
+host: api.wmata.com
+basePath: /Bus.svc
+schemes:
+- http
+produces:
+- application/json
+consumes:
+- application/json
+paths:
+  /json/jBusPositions:
+    get:
+      summary: JSON - Bus Position
+      description: |-
+        Description
+
+        Returns bus positions for the given route, with an optional search radius.
+        If no parameters are specified, all bus positions are returned.
+
+        Note that the RouteID parameter accepts only base route names and no
+        variations, i.e.: use 10A instead of 10Av1 or 10Av2.
+
+        Bus positions are refreshed approximately every 20 to 30 7 to 10 seconds.
+
+        Response Elements
+
+
+
+
+        Element
+
+        Description
+
+
+
+
+
+        BusPositions
+
+
+        Array containing bus position information (BusPositions).
+
+
+
+
+
+
+        BusPosition
+        Elements
+
+
+
+
+
+        DateTime
+
+        Date and time (Eastern Standard Time) of last position update.
+        Will be in YYYY-MM-DDTHH:mm:ss format (e.g.:
+        2014-10-27T13:23:40).
+
+
+
+        Deviation
+
+        Deviation, in minutes, from schedule. Positive values indicate
+        that the bus is running late while negative ones are for buses
+        running ahead of schedule.
+
+
+
+        DirectionNum
+
+        Deprecated. Use the
+        DirectionText for a customer-friendly description of
+        direction.
+
+
+
+        DirectionText
+
+        General direction of the trip, not the bus itself (e.g.: NORTH,
+        SOUTH, EAST, WEST).
+
+
+
+        Lat
+
+        Last reported Latitude of the bus.
+
+
+
+        Lon
+
+        Last reported Longitude of the bus.
+
+
+
+        RouteID
+
+        Base route name as shown on the bus. Note that the base route
+        name could also refer to any variant, so a RouteID of 10A could
+        refer to 10A, 10Av1, 10Av2, etc.
+
+
+
+        TripEndTime
+
+        Scheduled end date and time (Eastern Standard Time) of the
+        bus's current trip. Will be in YYYY-MM-DDTHH:mm:ss format (e.g.:
+        2014-10-27T13:17:00).
+
+
+
+        TripHeadsign
+
+        Destination of the bus.
+
+
+
+        TripID
+
+        Unique trip ID. This can be correlated with the data returned
+        from the schedule-related methods.
+
+
+
+        TripStartTime
+
+        Scheduled start date and time (Eastern Standard Time) of the
+        bus's current trip. Will be in YYYY-MM-DDTHH:mm:ss format (e.g.:
+        2014-10-27T12:40:00).
+
+
+
+        VehicleID
+
+        Unique identifier for the bus. This is usually visible on the
+        bus itself.
+      operationId: 5476362a281d830c946a3d68
+      x-api-path-slug: jsonjbuspositions-get
+      parameters:
+      - in: query
+        name: Lat
+        description: Center point Latitude, required if Longitude and Radius are specified
+      - in: query
+        name: Lon
+        description: Center point Longitude, required if Latitude and Radius are specified
+      - in: query
+        name: Radius
+        description: Radius (meters) to include in the search area, required if Latitude
+          and Longitude are specified
+      - in: query
+        name: RouteID
+        description: Base bus route, e
+      responses:
+        200:
+          description: OK
+      tags:
+      - Buses
+      - Positions
+  /json/jRouteDetails:
+    get:
+      summary: JSON - Path Details
+      description: "Description\r\n\r\nFor a given date, returns the set of ordered
+        latitude/longitude points along\r\na route variant along with the list of
+        stops served.\r\n\r\nResponse Elements\r\n\r\n\r\n\r\n\r\nElement\r\n\r\nDescription\r\n\r\n\r\n\r\n\r\n\r\nDirection0/Direction1\r\n\r\n\r\nStructures
+        describing path/stop\r\ninformation.\r\n\r\nMost routes will return content
+        in both Direction0 and\r\nDirection1 elements, though a few will return NULL
+        for Direction0 or for Direction1.\r\n\r\n0 or 1 are binary properties. There
+        is no specific mapping to\r\ndirection, but a different value for the same
+        route signifies\r\nthat the route is in an opposite direction.\r\n\r\n\r\n\r\n\r\nName\r\n\r\nDescriptive
+        name for the route.\r\n\r\n\r\n\r\nRouteID\r\n\r\nBus route variant (e.g.:
+        10A, 10Av1, etc.).\r\n\r\n\r\n\r\n\r\n\r\nDirection0/Direction1\r\nElements\r\n\r\n\r\n\r\n\r\n\r\nDirectionNum\r\n\r\nDeprecated.
+        Use the\r\nDirectionText element to denote the general direction of the route\r\nvariant.\r\n\r\n\r\n\r\nDirectionText\r\n\r\nGeneral
+        direction of the route variant (NORTH, SOUTH, EAST,\r\nWEST, LOOP, etc.).\r\n\r\n\r\n\r\nShape\r\n\r\n\r\nArray
+        containing shape point information (ShapePoint).\r\n\r\n\r\n\r\n\r\nStops\r\n\r\n\r\nArray
+        containing stop information (Stop).\r\n\r\n\r\n\r\n\r\nTripHeadsign\r\n\r\nDescriptive
+        text of where the bus is headed. This is similar,\r\nbut not necessarily identical,
+        to what is displayed on the\r\nbus.\r\n\r\n\r\n\r\n\r\n\r\nShapePoint\r\nElements\r\n\r\n\r\n\r\n\r\n\r\nLat\r\n\r\nLatitude.\r\n\r\n\r\n\r\nLon\r\n\r\nLongitude.\r\n\r\n\r\n\r\nSeqNum\r\n\r\nOrder
+        of the point in the sequence of ShapePoints.\r\n\r\n\r\n\r\n\r\n\r\nStop Elements\r\n\r\n\r\n\r\n\r\n\r\nLat\r\n\r\nLatitude.\r\n\r\n\r\n\r\nLon\r\n\r\nLongitude.\r\n\r\n\r\n\r\nName\r\n\r\nStop
+        name. May be slightly different from what is spoken or\r\ndisplayed in the
+        bus.\r\n\r\n\r\n\r\nRoutes\r\n\r\nString array of route variants which provide
+        service at this\r\nstop. Note that these are not date-specific; any route
+        variant\r\nwhich stops at this stop on any day will be listed.\r\n\r\n\r\n\r\nStopID\r\n\r\n7-digit
+        regional ID which can be used in various bus-related\r\nmethods. If unavailable,
+        the StopID will be 0 or NULL."
+      operationId: 5476362a281d830c946a3d69
+      x-api-path-slug: jsonjroutedetails-get
+      parameters:
+      - in: query
+        name: Date
+        description: Date in YYYY-MM-DD format for which to retrieve route and stop
+          information
+      - in: query
+        name: RouteID
+        description: Bus route variant, e
+      responses:
+        200:
+          description: OK
+      tags:
+      - Buses
+      - Routes
+x-streamrank:
+  polling_total_time_average: 0
+  polling_size_download_average: 0
+  streaming_total_time_average: 0
+  streaming_size_download_average: 0
+  change_yes: 0
+  change_no: 0
+  time_percentage: 0
+  size_percentage: 0
+  change_percentage: 0
+  last_run: ""
+  days_run: 0
+  minute_run: 0
+---
