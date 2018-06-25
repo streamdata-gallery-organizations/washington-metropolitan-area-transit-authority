@@ -5,7 +5,7 @@ description: This is a repository of washington metropolitan area transit author
   of the APIs and their surrounding operations.
 image: http://template.streamdata.gallery/assets/washington-metropolitan-area-transit-authority.png
 created: "2018-02-24"
-modified: "2018-06-20"
+modified: "2018-06-25"
 url: http://washington-metropolitan-area-transit-authority.streamdata.gallery/apis.json
 specificationVersion: "0.14"
 apis: []
