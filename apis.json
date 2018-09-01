@@ -1,0 +1,33 @@
+{
+	"name": "Streadata.io API Gallery - Washington Metropolitan Area Transit Authority",
+	"description": "This is a repository of washington metropolitan area transit authority APIs, self-contained as a Github repository, with HTML and YAML representations of the APIs and their surrounding operations.",
+	"image": "http://template.streamdata.gallery/assets/washington-metropolitan-area-transit-authority.png",
+	"created": "2018-02-24",
+	"modified": "2018-08-31",
+	"url": "http://washington-metropolitan-area-transit-authority.streamdata.gallery/apis.json",
+	"specificationVersion": "0.14",
+	"apis": [
+		{
+			"name": "Washington Metropolitan Area Transit Authority",
+			"x-api-slug": "washington-metropolitan-area-transit-authority",
+			"description": "Official feed of Metro/WMATA, not monitored 24/7. Report emergencies to Transit Police at (202) 962-2121. Service updates @metrorailinfo & @metrobusinfo.",
+			"image": "http://kinlane-productions.s3.amazonaws.com/screen-capture-api/1214-washington-metropolitan-area-transit-authority.jpg",
+			"humanURL": "http://wmata.com/",
+			"baseURL": "https://api.wmata.com//TrainPositions",
+			"tags": "Washington Metropolitan Area Transit Authority",
+			"properties": [
+				{
+					"type": "x-openapi-spec",
+					"url": "https://raw.githubusercontent.com/streamdata-gallery-organizations/washington-metropolitan-area-transit-authority/master/_listings/washington-metropolitan-area-transit-authority/openapi.md"
+				}
+			]
+		}
+	],
+	"tags": "Washington Metropolitan Area Transit Authority",
+	"include": [
+		{
+			"name": "Washington Metropolitan Area Transit Authority",
+			"url": "https://raw.githubusercontent.com/streamdata-gallery-organizations/washington-metropolitan-area-transit-authority/master/_listings/washington-metropolitan-area-transit-authority/apis.yaml"
+		}
+	]
+}

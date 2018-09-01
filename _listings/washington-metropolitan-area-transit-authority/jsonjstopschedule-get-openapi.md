@@ -243,9 +243,9 @@ paths:
         Elements\r\n\r\n\r\n\r\n\r\n\r\nName\r\n\r\nDescriptive name of the route
         variant.\r\n\r\n\r\n\r\nRouteID\r\n\r\nUnique identifier for a given route
         variant. Can be used in\r\nvarious other bus-related methods.\r\n\r\n\r\n\r\nLineDescription\r\n\r\nDenotes
-        the route variant\u2019s grouping \u2013 lines are a combination of routes
-        which lie in the same corridor and which have significant portions of their
-        paths along the same roadways."
+        the route variant???s grouping ??? lines are a combination of routes which
+        lie in the same corridor and which have significant portions of their paths
+        along the same roadways."
       operationId: 5476362a281d830c946a3d6a
       x-api-path-slug: jsonjroutes-get
       responses:
